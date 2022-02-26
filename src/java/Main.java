@@ -1,5 +1,4 @@
 import language.Robson;
-import language.exception.RobsonException;
 
 import java.io.IOException;
 
@@ -31,7 +30,7 @@ public class Main {
             robson.toJSON("output.json");
             robson.toJava("Translation.java");
             System.out.println(robson.wykonaj());
-        } catch (IOException | RobsonException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -1,6 +1,6 @@
 package language.operation.arithmetical;
 
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.Instruction;
 import language.operation.BinaryOperator;
 
@@ -23,11 +23,11 @@ public class Division extends BinaryOperator {
     }
 
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         double secondArgValue = secondArg.execute(variables);
         
         if (secondArgValue == 0.0)
-            throw new ProgramFailed("Division by zero is illegal.");
+            throw new ExecutionError("Division by zero is illegal.");
         
         return firstArg.execute(variables) / secondArg.execute(variables);
     }

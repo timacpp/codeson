@@ -1,6 +1,6 @@
 package language.operation.logical;
 
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.Instruction;
 import language.operation.Operator;
 import language.operation.UnaryOperator;
@@ -24,7 +24,7 @@ public class Not extends UnaryOperator {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         return Operator.toDouble(argument.execute(variables) == 0);
     }
 }

@@ -3,15 +3,17 @@ package language.statement;
 import java.util.HashMap;
 
 import com.squareup.moshi.Json;
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.util.Block;
 import language.Instruction;
 
 public class If implements Instruction {
     @Json(name = "warunek")
     private final Instruction condition;
+    
     @Json(name = "blok_prawda")
     private final Instruction truthInstruction;
+    
     @Json(name = "blok_falsz")
     private final Instruction elseInstruction;
     
@@ -22,7 +24,7 @@ public class If implements Instruction {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         if (condition.execute(variables) != 0)
             return truthInstruction.execute(variables);
         

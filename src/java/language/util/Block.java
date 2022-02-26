@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.squareup.moshi.Json;
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.Instruction;
 
 public class Block implements Instruction {
@@ -21,13 +21,15 @@ public class Block implements Instruction {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         if (instructions.size() == 0)
             return 0;
         
         double lastInstructionValue = 0;
-        for (Instruction instruction : instructions)
+        
+        for (Instruction instruction : instructions) {
             lastInstructionValue = instruction.execute(variables);
+        }
         
         return lastInstructionValue;
     }
@@ -38,22 +40,18 @@ public class Block implements Instruction {
             return prefix + "new Lambda(() -> 0.0).get()";
         
         StringBuilder lambdas = new StringBuilder();
+        
         for (int i = 0; i < instructions.size(); i++) {
-            Instruction instruction = instructions.get(i);
-            
+            String instruction = instructions.get(i).toLambda(prefix + "\t");
+
             if (i < instructions.size() - 1) {
-                lambdas.append(instruction.toLambda(prefix + "\t") + ";\n");
+                lambdas.append(instruction).append(";\n");
             } else {
-                String lastWithoutTabs = instruction
-                                         .toLambda(prefix + "\t")
-                                         .substring(prefix.length() + 1);
-                
-                lambdas.append(prefix + "\treturn " + lastWithoutTabs + ";");
+                String suffix = instruction.substring(prefix.length() + 1);
+                lambdas.append(prefix).append("\treturn ").append(suffix).append(";");
             }
         }
         
-        return prefix + "new Lambda(() -> {\n" + 
-               lambdas + "\n" +
-               prefix + "}).get()";
+        return prefix + "new Lambda(() -> {\n" + lambdas + "\n" + prefix + "}).get()";
     }
 }

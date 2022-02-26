@@ -3,11 +3,9 @@ package language;
 import java.util.HashMap;
 
 public interface Instruction {
-    /* Method for processing and evaluation of instruction
-    on a particular map of variables 'variables'. */
-    double execute(HashMap<String, Double> variables) throws ProgramFailed;
+    /** Evaluates instruction with a given set of variables */
+    double execute(HashMap<String, Double> variables) throws ExecutionError;
 
-    /* Method for conversation instruction to string
-    value with prefix of a custom Java lambda function. */
+    /** Converts instruction to a string Java Lambda */
     String toLambda(String prefix);
 }

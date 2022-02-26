@@ -1,6 +1,6 @@
 package language.operation.logical;
 
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.Instruction;
 import language.operation.BinaryOperator;
 import language.operation.Operator;
@@ -24,7 +24,7 @@ public class Or extends BinaryOperator {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         boolean firstArgValue = firstArg.execute(variables) != 0;
         boolean secondArgValue = secondArg.execute(variables) != 0;
         return Operator.toDouble(firstArgValue || secondArgValue);

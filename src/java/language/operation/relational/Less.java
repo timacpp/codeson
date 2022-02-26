@@ -1,6 +1,6 @@
 package language.operation.relational;
 
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.Instruction;
 import language.operation.BinaryOperator;
 import language.operation.Operator;
@@ -24,7 +24,7 @@ public class Less extends BinaryOperator {
     }
 
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         double firstArgValue = firstArg.execute(variables);
         double secondArgValue = secondArg.execute(variables);
         return Operator.toDouble(firstArgValue < secondArgValue);

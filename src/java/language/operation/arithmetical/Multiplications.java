@@ -1,6 +1,6 @@
 package language.operation.arithmetical;
 
-import language.ProgramFailed;
+import language.ExecutionError;
 import language.Instruction;
 import language.operation.BinaryOperator;
 
@@ -23,7 +23,7 @@ public class Multiplications extends BinaryOperator {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ProgramFailed {
+    public double execute(HashMap<String, Double> variables) throws ExecutionError {
         return firstArg.execute(variables) * secondArg.execute(variables);
     }
 }

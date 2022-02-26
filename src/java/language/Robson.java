@@ -128,7 +128,7 @@ public class Robson {
     }
 
     /* Perform imported ROBSON program to get a numerical result. */
-    public double wykonaj() throws ProgramFailed {
+    public double wykonaj() throws ExecutionError {
         /* Empty hashmap is required to store values
         of variables on which program operates. */
         return program.execute(new HashMap<String, Double>());
