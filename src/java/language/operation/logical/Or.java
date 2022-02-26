@@ -25,8 +25,8 @@ public class Or extends BinaryOperator {
     
     @Override
     public double execute(HashMap<String, Double> variables) throws ProgramFailed {
-        boolean firstValue = firstArg.execute(variables) != 0;
-        boolean secondValue = secondArg.execute(variables) != 0;
-        return Operator.toDouble(firstValue || secondValue);
+        boolean firstArgValue = firstArg.execute(variables) != 0;
+        boolean secondArgValue = secondArg.execute(variables) != 0;
+        return Operator.toDouble(firstArgValue || secondArgValue);
     }
 }

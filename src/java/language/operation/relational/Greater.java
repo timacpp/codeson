@@ -25,8 +25,8 @@ public class Greater extends BinaryOperator {
 
     @Override
     public double execute(HashMap<String, Double> variables) throws ProgramFailed {
-        double firstValue = firstArg.execute(variables);
-        double secondValue = secondArg.execute(variables);
-        return Operator.toDouble(firstValue > secondValue);
+        double firstArgValue = firstArg.execute(variables);
+        double secondArgValue = secondArg.execute(variables);
+        return Operator.toDouble(firstArgValue > secondArgValue);
     }
 }
