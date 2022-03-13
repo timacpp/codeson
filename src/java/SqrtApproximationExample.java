@@ -1,4 +1,4 @@
-import codeson.processor.CodesonExecutor;
+import codeson.CodesonExecutor;
 
 /** 
  * Example program comparing the evaluation of a square root

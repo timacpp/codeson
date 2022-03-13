@@ -1,4 +1,4 @@
-package codeson.processor.wrapper;
+package codeson.jsonwrap;
 
 import java.io.File;
 import java.io.Closeable;

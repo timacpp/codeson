@@ -1,4 +1,4 @@
-package codeson.processor.wrapper;
+package codeson.jsonwrap;
 
 import codeson.structure.Instruction;
 import codeson.structure.operation.arithmetical.*;

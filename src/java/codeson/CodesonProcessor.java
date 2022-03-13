@@ -1,6 +1,6 @@
-package codeson.processor;
+package codeson;
 
-import codeson.processor.wrapper.CodesonAdapter;
+import codeson.jsonwrap.CodesonAdapter;
 import codeson.structure.Instruction;
 
 /** Super-class for classes manipulating Codeson programs */

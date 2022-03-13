@@ -1,4 +1,4 @@
-package codeson.processor;
+package codeson;
 
 import java.io.FileWriter;
 import java.io.IOException;

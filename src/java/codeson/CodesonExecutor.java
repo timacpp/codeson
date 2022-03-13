@@ -1,4 +1,4 @@
-package codeson.processor;
+package codeson;
 
 import java.util.HashMap;
 

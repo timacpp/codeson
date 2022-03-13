@@ -1,5 +1,5 @@
-import codeson.processor.CodesonCloner;
-import codeson.processor.CodesonTranslator;
+import codeson.CodesonCloner;
+import codeson.CodesonTranslator;
 
 /**
  * Example program translating a Codeson program to Java and
