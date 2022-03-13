@@ -14,7 +14,6 @@ public class CodesonExecutor extends CodesonProcessor {
      * @return value of a last executed instruction
      */
     public double execute() {
-        /* Empty hashmap to store variable values */
-        return program.execute(new HashMap<>());
+        return program.execute(new HashMap<>()); /* Empty hash map to store variable values */
     }
 }

@@ -1,27 +1,29 @@
+/** This code was generated automatically using CodesonTranslator class. */
+
 import java.util.HashMap;
 import java.util.function.Supplier;
 
 class Lambda {
-	private final Supplier<Double> function;
+    private final Supplier<Double> function;
 
-	public Lambda(Supplier<Double> function) {
-		this.function = function;
-	}
+    public Lambda(Supplier<Double> function) {
+        this.function = function;
+    }
 
-	public Double get() {
-		return function.get();
-	}
+    public Double get() {
+        return function.get();
+    }
 }
 
-public class Translation {
-	public static double toDouble(boolean value) {
-		return (value ? 1.0 : 0.0);
-	}
+public class CodesonTranslated {
+    public static double toDouble(boolean value) {
+        return (value ? 1.0 : 0.0);
+    }
 
-	public static void main(String[] args) {
-		HashMap<String, Double> variables = new HashMap<>();
-		System.out.println(
-			new Lambda(() -> {
+    public static void main(String[] args) {
+        HashMap<String, Double> variables = new HashMap<>();
+        System.out.println(
+            			new Lambda(() -> {
 				new Lambda(() -> {
 					variables.put("value", new Lambda(() -> 9.8695877281E10).get());
 					return variables.get("value");
@@ -63,6 +65,6 @@ public class Translation {
 				}).get();
 				return new Lambda(() -> variables.getOrDefault("l", 0.0)).get();
 			}).get()
-		);
-	}
+        );
+     }
 }

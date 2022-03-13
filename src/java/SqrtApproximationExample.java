@@ -1,6 +1,11 @@
 import codeson.processor.CodesonExecutor;
 
-public class RootApproximation {
+/** 
+ * Example program comparing the evaluation of a square root
+ * using binary search in Java and Codeson.
+ */
+
+public class SqrtApproximationExample {
     static private final double ROOT_SQUARED = 98695877281.0;
     static private final double PRECISION = 1e-9;
     
@@ -21,14 +26,11 @@ public class RootApproximation {
     }
     
     private static double approximateRootCodeson() {
-        return new CodesonExecutor("fastsqrt.json").execute();
+        return new CodesonExecutor("CodesonSqrt.json").execute();
     }
     
     public static void main(String[] args) {
-        double rootJava = approximateRootJava();
-        double rootCodeson = approximateRootCodeson();
-        
-        System.out.println(rootJava);
-        System.out.println(rootCodeson);
+        System.out.println("Result in Java: " + approximateRootJava());
+        System.out.println("Result in Codeson: " + approximateRootCodeson());
     }
 }

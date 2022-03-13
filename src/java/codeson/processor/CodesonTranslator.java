@@ -13,17 +13,21 @@ public class CodesonTranslator extends CodesonProcessor {
      * Translates a Codeson program to Java file.
      * @param filename name of Java file to create.
      */
-    public void translate(String filename) throws IOException {
+    public void translate(String filename) {
         try (FileWriter writer = new FileWriter(filename)) {
             String programTranslated = program.toLambda("\t\t\t");
             String className = filename.substring(0, filename.length() - ".java".length());
             writer.write(constructTranslation(className, programTranslated));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     
     private static String constructTranslation(String className, String program) {
         return String.format(
                 """
+                /** This code was generated automatically using CodesonTranslator class. */
+                
                 import java.util.HashMap;
                 import java.util.function.Supplier;
                         
@@ -31,7 +35,7 @@ public class CodesonTranslator extends CodesonProcessor {
                     private final Supplier<Double> function;
                     
                     public Lambda(Supplier<Double> function) {
-                            this.function = function;
+                        this.function = function;
                     }
                         
                     public Double get() {
