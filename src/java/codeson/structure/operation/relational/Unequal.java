@@ -1,6 +1,5 @@
 package codeson.structure.operation.relational;
 
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 import codeson.structure.operation.BinaryOperator;
 import codeson.structure.operation.Operator;
@@ -24,7 +23,7 @@ public class Unequal extends BinaryOperator {
     }
 
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         double firstArgValue = firstArg.execute(variables);
         double secondArgValue = secondArg.execute(variables);
         return Operator.toDouble(firstArgValue != secondArgValue);

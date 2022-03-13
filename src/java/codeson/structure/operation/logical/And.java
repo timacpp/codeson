@@ -1,6 +1,5 @@
 package codeson.structure.operation.logical;
 
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 import codeson.structure.operation.BinaryOperator;
 import codeson.structure.operation.Operator;
@@ -24,7 +23,7 @@ public class And extends BinaryOperator {
     }
 
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         boolean firstArgValue = firstArg.execute(variables) != 0;
         boolean secondArgValue = secondArg.execute(variables) != 0;
         return Operator.toDouble(firstArgValue && secondArgValue);

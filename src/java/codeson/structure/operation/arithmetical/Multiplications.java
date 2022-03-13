@@ -1,6 +1,5 @@
 package codeson.structure.operation.arithmetical;
 
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 import codeson.structure.operation.BinaryOperator;
 
@@ -23,7 +22,7 @@ public class Multiplications extends BinaryOperator {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         return firstArg.execute(variables) * secondArg.execute(variables);
     }
 }

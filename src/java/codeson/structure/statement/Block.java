@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.squareup.moshi.Json;
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 
 public class Block implements Instruction {
@@ -21,7 +20,7 @@ public class Block implements Instruction {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         if (instructions.size() == 0)
             return 0;
         

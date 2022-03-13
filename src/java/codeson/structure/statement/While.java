@@ -3,7 +3,6 @@ package codeson.structure.statement;
 import java.util.HashMap;
 
 import com.squareup.moshi.Json;
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 
 public class While implements Instruction {
@@ -19,7 +18,7 @@ public class While implements Instruction {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         while (condition.execute(variables) != 0) {
             loopInstruction.execute(variables);
         }

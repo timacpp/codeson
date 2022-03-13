@@ -3,7 +3,6 @@ package codeson.structure.statement;
 import java.util.HashMap;
 
 import com.squareup.moshi.Json;
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 
 public class If implements Instruction {
@@ -23,7 +22,7 @@ public class If implements Instruction {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         if (condition.execute(variables) != 0)
             return truthInstruction.execute(variables);
         

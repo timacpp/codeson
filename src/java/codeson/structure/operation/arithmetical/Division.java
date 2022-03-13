@@ -1,6 +1,5 @@
 package codeson.structure.operation.arithmetical;
 
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 import codeson.structure.operation.BinaryOperator;
 
@@ -23,11 +22,12 @@ public class Division extends BinaryOperator {
     }
 
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         double secondArgValue = secondArg.execute(variables);
         
-        if (secondArgValue == 0.0)
-            throw new ExecutionError("Division by zero is illegal.");
+        if (secondArgValue == 0.0) {
+            throw new ArithmeticException("Division by zero is illegal.");
+        }
         
         return firstArg.execute(variables) / secondArg.execute(variables);
     }

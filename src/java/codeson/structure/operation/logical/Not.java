@@ -1,6 +1,5 @@
 package codeson.structure.operation.logical;
 
-import codeson.structure.ExecutionError;
 import codeson.structure.Instruction;
 import codeson.structure.operation.Operator;
 import codeson.structure.operation.UnaryOperator;
@@ -24,7 +23,7 @@ public class Not extends UnaryOperator {
     }
     
     @Override
-    public double execute(HashMap<String, Double> variables) throws ExecutionError {
+    public double execute(HashMap<String, Double> variables) {
         return Operator.toDouble(argument.execute(variables) == 0);
     }
 }
