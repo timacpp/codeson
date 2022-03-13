@@ -13,7 +13,7 @@ class Lambda {
 	}
 }
 
-public class Translation{
+public class Translation {
 	public static double toDouble(boolean value) {
 		return (value ? 1.0 : 0.0);
 	}
