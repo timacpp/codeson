@@ -25,45 +25,45 @@ public class CodesonSqrtTranslated {
         System.out.println(
             			new Lambda(() -> {
 				new Lambda(() -> {
-					variables.put("value", new Lambda(() -> 9.8695877281E10).get());
-					return variables.get("value");
+					variables.put("root_squared", new Lambda(() -> 9.8695877281E10).get());
+					return variables.get("root_squared");
 				}).get();
 				new Lambda(() -> {
 					variables.put("epsilon", new Lambda(() -> 1.0E-9).get());
 					return variables.get("epsilon");
 				}).get();
 				new Lambda(() -> {
-					variables.put("l", new Lambda(() -> 0.0).get());
-					return variables.get("l");
+					variables.put("low", new Lambda(() -> 0.0).get());
+					return variables.get("low");
 				}).get();
 				new Lambda(() -> {
-					variables.put("r", new Lambda(() -> variables.getOrDefault("value", 0.0)).get());
-					return variables.get("r");
+					variables.put("high", new Lambda(() -> variables.getOrDefault("root_squared", 0.0)).get());
+					return variables.get("high");
 				}).get();
 				new Lambda(() -> {
-					while (new Lambda(() -> toDouble(new Lambda(() -> new Lambda(() -> variables.getOrDefault("l", 0.0)).get() + new Lambda(() -> variables.getOrDefault("epsilon", 0.0)).get()).get() < new Lambda(() -> variables.getOrDefault("r", 0.0)).get())).get() != 0.0) {
+					while (new Lambda(() -> toDouble(new Lambda(() -> new Lambda(() -> variables.getOrDefault("low", 0.0)).get() + new Lambda(() -> variables.getOrDefault("epsilon", 0.0)).get()).get() < new Lambda(() -> variables.getOrDefault("high", 0.0)).get())).get() != 0.0) {
 						new Lambda(() -> {
 							new Lambda(() -> {
-								variables.put("m", new Lambda(() -> new Lambda(() -> new Lambda(() -> variables.getOrDefault("l", 0.0)).get() + new Lambda(() -> variables.getOrDefault("r", 0.0)).get()).get() / new Lambda(() -> 2.0).get()).get());
-								return variables.get("m");
+								variables.put("mid", new Lambda(() -> new Lambda(() -> new Lambda(() -> variables.getOrDefault("low", 0.0)).get() + new Lambda(() -> variables.getOrDefault("high", 0.0)).get()).get() / new Lambda(() -> 2.0).get()).get());
+								return variables.get("mid");
 							}).get();
-							return new Lambda(() -> new Lambda(() -> toDouble(new Lambda(() -> new Lambda(() -> variables.getOrDefault("m", 0.0)).get() * new Lambda(() -> variables.getOrDefault("m", 0.0)).get()).get() <= new Lambda(() -> variables.getOrDefault("value", 0.0)).get())).get() != 0.0
+							return new Lambda(() -> new Lambda(() -> toDouble(new Lambda(() -> new Lambda(() -> variables.getOrDefault("mid", 0.0)).get() * new Lambda(() -> variables.getOrDefault("mid", 0.0)).get()).get() <= new Lambda(() -> variables.getOrDefault("root_squared", 0.0)).get())).get() != 0.0
 								?
 								new Lambda(() -> {
-									variables.put("l", new Lambda(() -> variables.getOrDefault("m", 0.0)).get());
-									return variables.get("l");
+									variables.put("low", new Lambda(() -> variables.getOrDefault("mid", 0.0)).get());
+									return variables.get("low");
 								}).get()
 								:
 								new Lambda(() -> {
-									variables.put("r", new Lambda(() -> variables.getOrDefault("m", 0.0)).get());
-									return variables.get("r");
+									variables.put("high", new Lambda(() -> variables.getOrDefault("mid", 0.0)).get());
+									return variables.get("high");
 								}).get()
 								).get();
 						}).get();
 					}
 					return 0.0;
 				}).get();
-				return new Lambda(() -> variables.getOrDefault("l", 0.0)).get();
+				return new Lambda(() -> variables.getOrDefault("low", 0.0)).get();
 			}).get()
         );
      }

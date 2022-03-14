@@ -6,7 +6,7 @@ import codeson.structure.Instruction;
 import java.util.HashMap;
 
 public class Variable implements Instruction {
-    @Json(name = "nazwa")
+    @Json(name = "name")
     private final String name;
     
     public Variable(String name) {

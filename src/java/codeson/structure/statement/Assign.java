@@ -6,10 +6,10 @@ import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
 
 public class Assign implements Instruction {
-    @Json(name = "nazwa")
+    @Json(name = "target")
     private final String assignVariableName;
     
-    @Json(name = "wartosc")
+    @Json(name = "value")
     private final Instruction assignInstruction;
     
     public Assign(String assignVariableName, Instruction assignValue) {

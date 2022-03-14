@@ -4,16 +4,14 @@ import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
 
 public abstract class BinaryOperator extends Operator {
-    @Json(name = "argument1")
+    @Json(name = "larg")
     protected Instruction firstArg;
     
-    @Json(name = "argument2")
+    @Json(name = "rarg")
     protected Instruction secondArg;
     
     public BinaryOperator(boolean logicalInput, boolean logicalOutput) {
         super(logicalInput, logicalOutput);
-        this.firstArg = null;
-        this.secondArg = null;
     }
     
     public BinaryOperator(Instruction firstArg, Instruction secondArg,

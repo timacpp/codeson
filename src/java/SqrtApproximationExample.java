@@ -4,25 +4,24 @@ import codeson.CodesonExecutor;
  * Example program comparing the evaluation of a square root
  * using binary search in Java and Codeson.
  */
-
 public class SqrtApproximationExample {
     static private final double ROOT_SQUARED = 98695877281.0;
-    static private final double PRECISION = 1e-9;
+    static private final double EPSILON = 1e-9;
     
     private static double approximateRootJava() {
-        double l = 0.0, r = ROOT_SQUARED;
+        double low = 0.0, high = ROOT_SQUARED;
 
-        while (l + PRECISION < r) {
-            double m = (l + r) / 2;
+        while (low + EPSILON < high) {
+            double mid = (low + high) / 2;
             
-            if (m * m <= ROOT_SQUARED) {
-                l = m;
+            if (mid * mid <= ROOT_SQUARED) {
+                low = mid;
             } else {
-                r = m;
+                high = mid;
             }
         }
         
-        return l;
+        return low;
     }
     
     private static double approximateRootCodeson() {

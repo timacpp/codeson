@@ -6,10 +6,10 @@ import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
 
 public class While implements Instruction {
-    @Json(name = "warunek")
+    @Json(name = "condition")
     private final Instruction condition;
     
-    @Json(name = "blok")
+    @Json(name = "instruction")
     private final Instruction loopInstruction;
 
     public While(Instruction condition, Instruction loopBlock) {

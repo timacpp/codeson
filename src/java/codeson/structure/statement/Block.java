@@ -8,7 +8,7 @@ import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
 
 public class Block implements Instruction {
-    @Json(name = "instrukcje")
+    @Json(name = "instructions")
     private final List<Instruction> instructions;
     
     public Block() {

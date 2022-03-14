@@ -5,14 +5,14 @@ import codeson.structure.operation.BinaryOperator;
 
 import java.util.HashMap;
 
-public class Multiplications extends BinaryOperator {
+public class Multiplication extends BinaryOperator {
     @SuppressWarnings("unused")
-    public Multiplications() {
+    public Multiplication() {
         super(false, false);
     }
 
     @SuppressWarnings("unused")
-    public Multiplications(Instruction firstArg, Instruction secondArg) {
+    public Multiplication(Instruction firstArg, Instruction secondArg) {
         super(firstArg, secondArg, false, false);
     }
 

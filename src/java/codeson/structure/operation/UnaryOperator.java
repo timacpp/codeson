@@ -4,12 +4,11 @@ import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
 
 public abstract class UnaryOperator extends Operator {
-    @Json(name = "argument")
+    @Json(name = "arg")
     protected Instruction argument;
     
     public UnaryOperator(boolean logicalInput, boolean logicalOutput) {
         super(logicalInput, logicalOutput);
-        this.argument = null;
     }
     
     public UnaryOperator(Instruction argument, boolean logicalInput, boolean logicalOutput) {

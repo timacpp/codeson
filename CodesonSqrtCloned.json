@@ -1,126 +1,126 @@
 {
-	"typ": "Blok",
-	"instrukcje": [
+	"type": "block",
+	"instructions": [
 		{
-			"typ": "Przypisanie",
-			"nazwa": "value",
-			"wartosc": {
-				"typ": "Liczba",
-				"wartosc": 9.8695877281E10
+			"type": "=",
+			"target": "root_squared",
+			"value": {
+				"type": "number",
+				"value": 9.8695877281E10
 			}
 		},
 		{
-			"typ": "Przypisanie",
-			"nazwa": "epsilon",
-			"wartosc": {
-				"typ": "Liczba",
-				"wartosc": 1.0E-9
+			"type": "=",
+			"target": "epsilon",
+			"value": {
+				"type": "number",
+				"value": 1.0E-9
 			}
 		},
 		{
-			"typ": "Przypisanie",
-			"nazwa": "l",
-			"wartosc": {
-				"typ": "Liczba",
-				"wartosc": 0.0
+			"type": "=",
+			"target": "low",
+			"value": {
+				"type": "number",
+				"value": 0.0
 			}
 		},
 		{
-			"typ": "Przypisanie",
-			"nazwa": "r",
-			"wartosc": {
-				"typ": "Zmienna",
-				"nazwa": "value"
+			"type": "=",
+			"target": "high",
+			"value": {
+				"type": "variable",
+				"name": "root_squared"
 			}
 		},
 		{
-			"typ": "While",
-			"blok": {
-				"typ": "Blok",
-				"instrukcje": [
+			"type": "while",
+			"condition": {
+				"type": "<",
+				"larg": {
+					"type": "+",
+					"larg": {
+						"type": "variable",
+						"name": "low"
+					},
+					"rarg": {
+						"type": "variable",
+						"name": "epsilon"
+					}
+				},
+				"rarg": {
+					"type": "variable",
+					"name": "high"
+				}
+			},
+			"instruction": {
+				"type": "block",
+				"instructions": [
 					{
-						"typ": "Przypisanie",
-						"nazwa": "m",
-						"wartosc": {
-							"typ": "Dzielenie",
-							"argument1": {
-								"typ": "Plus",
-								"argument1": {
-									"typ": "Zmienna",
-									"nazwa": "l"
+						"type": "=",
+						"target": "mid",
+						"value": {
+							"type": "/",
+							"larg": {
+								"type": "+",
+								"larg": {
+									"type": "variable",
+									"name": "low"
 								},
-								"argument2": {
-									"typ": "Zmienna",
-									"nazwa": "r"
+								"rarg": {
+									"type": "variable",
+									"name": "high"
 								}
 							},
-							"argument2": {
-								"typ": "Liczba",
-								"wartosc": 2.0
+							"rarg": {
+								"type": "number",
+								"value": 2.0
 							}
 						}
 					},
 					{
-						"typ": "If",
-						"blok_falsz": {
-							"typ": "Przypisanie",
-							"nazwa": "r",
-							"wartosc": {
-								"typ": "Zmienna",
-								"nazwa": "m"
-							}
-						},
-						"blok_prawda": {
-							"typ": "Przypisanie",
-							"nazwa": "l",
-							"wartosc": {
-								"typ": "Zmienna",
-								"nazwa": "m"
-							}
-						},
-						"warunek": {
-							"typ": "<=",
-							"argument1": {
-								"typ": "Razy",
-								"argument1": {
-									"typ": "Zmienna",
-									"nazwa": "m"
+						"type": "if",
+						"condition": {
+							"type": "<=",
+							"larg": {
+								"type": "*",
+								"larg": {
+									"type": "variable",
+									"name": "mid"
 								},
-								"argument2": {
-									"typ": "Zmienna",
-									"nazwa": "m"
+								"rarg": {
+									"type": "variable",
+									"name": "mid"
 								}
 							},
-							"argument2": {
-								"typ": "Zmienna",
-								"nazwa": "value"
+							"rarg": {
+								"type": "variable",
+								"name": "root_squared"
+							}
+						},
+						"false-block": {
+							"type": "=",
+							"target": "high",
+							"value": {
+								"type": "variable",
+								"name": "mid"
+							}
+						},
+						"true-block": {
+							"type": "=",
+							"target": "low",
+							"value": {
+								"type": "variable",
+								"name": "mid"
 							}
 						}
 					}
 				]
-			},
-			"warunek": {
-				"typ": "<",
-				"argument1": {
-					"typ": "Plus",
-					"argument1": {
-						"typ": "Zmienna",
-						"nazwa": "l"
-					},
-					"argument2": {
-						"typ": "Zmienna",
-						"nazwa": "epsilon"
-					}
-				},
-				"argument2": {
-					"typ": "Zmienna",
-					"nazwa": "r"
-				}
 			}
 		},
 		{
-			"typ": "Zmienna",
-			"nazwa": "l"
+			"type": "variable",
+			"name": "low"
 		}
 	]
 }

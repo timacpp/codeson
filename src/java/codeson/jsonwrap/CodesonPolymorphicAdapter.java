@@ -14,24 +14,22 @@ public class CodesonPolymorphicAdapter {
     private PolymorphicJsonAdapterFactory<Instruction> factory;
     
     public CodesonPolymorphicAdapter() {
-        this.factory = PolymorphicJsonAdapterFactory.of(Instruction.class, "typ");
+        this.factory = PolymorphicJsonAdapterFactory.of(Instruction.class, "type");
         this.addStorageSubtypes().addStatementSubtypes().addOperationSubtypes();
     }
 
     private CodesonPolymorphicAdapter addStorageSubtypes() {
-        this.factory = factory.withSubtype(Constant.class, "Liczba")
-                .withSubtype(Constant.class, "True")
-                .withSubtype(Constant.class, "False")
-                .withSubtype(Variable.class, "Zmienna");
+        this.factory = factory.withSubtype(Variable.class, "variable")
+                .withSubtype(Constant.class, "number");
         
         return this;
     }
     
     private CodesonPolymorphicAdapter addStatementSubtypes() {
-        this.factory = factory.withSubtype(Assign.class, "Przypisanie")
-                .withSubtype(Block.class, "Blok")
-                .withSubtype(If.class, "If")
-                .withSubtype(While.class, "While");
+        this.factory = factory.withSubtype(Assign.class, "=")
+                .withSubtype(Block.class, "block")
+                .withSubtype(If.class, "if")
+                .withSubtype(While.class, "while");
         
         return this;
     }
@@ -43,18 +41,18 @@ public class CodesonPolymorphicAdapter {
     }
     
     private CodesonPolymorphicAdapter addArithmeticalSubtypes() {
-        this.factory = factory.withSubtype(Addition.class, "Plus")
-                .withSubtype(Subtraction.class, "Minus")
-                .withSubtype(Multiplications.class, "Razy")
-                .withSubtype(Division.class, "Dzielenie");
+        this.factory = factory.withSubtype(Addition.class, "+")
+                .withSubtype(Subtraction.class, "-")
+                .withSubtype(Multiplication.class, "*")
+                .withSubtype(Division.class, "/");
         
         return this;
     }
     
     private CodesonPolymorphicAdapter addLogicalSubtypes() {
-        this.factory = factory.withSubtype(And.class, "And")
-                .withSubtype(Or.class, "Or")
-                .withSubtype(Not.class, "Not");
+        this.factory = factory.withSubtype(And.class, "&&")
+                .withSubtype(Or.class, "||")
+                .withSubtype(Not.class, "!");
         
         return this;
     }
@@ -72,5 +70,6 @@ public class CodesonPolymorphicAdapter {
     
     public PolymorphicJsonAdapterFactory<Instruction> getJsonFactory() {
         return factory;
+                
     }
 }
