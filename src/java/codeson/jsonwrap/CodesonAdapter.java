@@ -1,7 +1,7 @@
 package codeson.jsonwrap;
 
 import codeson.structure.Instruction;
-import codeson.structure.storage.*;
+import codeson.structure.unit.*;
 
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.JsonAdapter;

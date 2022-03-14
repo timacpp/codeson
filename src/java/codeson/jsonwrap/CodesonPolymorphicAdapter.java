@@ -5,7 +5,7 @@ import codeson.structure.operation.arithmetical.*;
 import codeson.structure.operation.logical.*;
 import codeson.structure.operation.relational.*;
 import codeson.structure.statement.*;
-import codeson.structure.storage.*;
+import codeson.structure.unit.*;
 
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory;
 

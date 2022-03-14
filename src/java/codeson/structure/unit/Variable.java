@@ -1,4 +1,4 @@
-package codeson.structure.storage;
+package codeson.structure.unit;
 
 import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
