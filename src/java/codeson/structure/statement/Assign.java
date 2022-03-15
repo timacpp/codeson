@@ -37,6 +37,7 @@ public class Assign implements Instruction {
                 prefix, assignVariableName, assignInstruction.toLambda(""),
                 prefix,
                 assignVariableName,
-                prefix);
+                prefix
+        );
     }
 }

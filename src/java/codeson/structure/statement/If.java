@@ -45,7 +45,8 @@ public class If implements Instruction {
                 truthInstruction.toLambda(prefix + "	"),
                 prefix,
                 getElseBlockLambda(prefix),
-                prefix);
+                prefix
+        );
     }
     
     private String getElseBlockLambda(String prefix) {
