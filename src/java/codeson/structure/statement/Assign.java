@@ -26,12 +26,17 @@ public class Assign implements Instruction {
     
     @Override
     public String toLambda(String prefix) {
-        return prefix + "new Lambda(() -> {\n" + 
-                prefix + "\t" + "variables.put(" + 
-                "\"" + assignVariableName + "\", " + 
-                assignInstruction.toLambda("") + ");\n" + 
-                prefix + "\t" + "return variables.get(" + 
-                "\"" + assignVariableName + "\");\n" + 
-                prefix + "}).get()";
+        return String.format(
+                """
+                %snew Lambda(() -> {
+                %s  variables.put("%s", %s);
+                %s  return variables.get("%s");
+                %s}).get()
+                """, 
+                prefix,
+                prefix, assignVariableName, assignInstruction.toLambda(""),
+                prefix,
+                assignVariableName,
+                prefix);
     }
 }
