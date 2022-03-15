@@ -8,7 +8,7 @@ import codeson.CodesonTranslator;
 public class SqrtTranslationExample {
     public static void main(String[] args) {
         CodesonTranslator translator = new CodesonTranslator("CodesonSqrt.json");
-        translator.translate("src/java/CodesonSqrtTranslated.java");
+        translator.translate("CodesonSqrtTranslated.java");
         
         CodesonCloner cloner = new CodesonCloner("CodesonSqrt.json");
         cloner.clone("CodesonSqrtCloned.json");

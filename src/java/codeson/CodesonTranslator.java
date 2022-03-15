@@ -14,7 +14,7 @@ public class CodesonTranslator extends CodesonProcessor {
      * @param filename name of Java file to create.
      */
     public void translate(String filename) {
-        try (FileWriter writer = new FileWriter(filename)) {
+        try (FileWriter writer = new FileWriter("src/java/" + filename)) {
             String programTranslated = program.toLambda("\t\t\t");
             String className = filename.substring(0, filename.length() - ".java".length());
             writer.write(constructTranslation(className, programTranslated));
