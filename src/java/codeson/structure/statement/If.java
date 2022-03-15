@@ -34,25 +34,25 @@ public class If implements Instruction {
         return String.format(
                """
                %snew Lambda(() -> %s != 0.0
-               %s  ?
+               %s   ?
                %s
-               %s  :
+               %s   :
                %s
                %s   ).get()
                """,
                 prefix, condition.toLambda(""),
                 prefix,
-                truthInstruction.toLambda(prefix + "	"),
+                truthInstruction.toLambda(prefix + "\t"),
                 prefix,
-                getElseBlockLambda(prefix),
+                getElseBlockLambda(prefix + "\t"),
                 prefix
         );
     }
     
     private String getElseBlockLambda(String prefix) {
         if (elseInstruction == null)
-            return new Block().toLambda(prefix + "\t");
+            return new Block().toLambda(prefix);
         
-        return elseInstruction.toLambda(prefix + "\t");
+        return elseInstruction.toLambda(prefix);
     }
 }
