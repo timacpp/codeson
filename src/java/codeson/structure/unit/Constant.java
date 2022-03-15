@@ -20,7 +20,7 @@ public class Constant implements Instruction {
 
     @Override
     public String toLambda(String prefix) {
-        return prefix + "new Lambda(() -> " + value + ").get()";
+        return String.format("%snew Lambda(() -> %e).get()", prefix, value);
     }
     
 }
