@@ -51,7 +51,7 @@ public class CodesonTranslator extends CodesonProcessor {
                     public static void main(String[] args) {
                         HashMap<String, Double> variables = new HashMap<>();
                         System.out.println(
-                            %s
+                %s
                         );
                      }
                 }
