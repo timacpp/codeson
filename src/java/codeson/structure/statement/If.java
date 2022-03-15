@@ -40,7 +40,8 @@ public class If implements Instruction {
                %s
                %s   ).get()
                """,
-                prefix, condition.toLambda(""), prefix,
+                prefix, condition.toLambda(""),
+                prefix,
                 truthInstruction.toLambda(prefix + "	"),
                 prefix,
                 getElseBlockLambda(prefix),
