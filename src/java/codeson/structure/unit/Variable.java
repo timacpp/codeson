@@ -20,6 +20,6 @@ public class Variable implements Instruction {
 
     @Override
     public String toLambda(String prefix) {
-        return prefix + "new Lambda(() -> variables.getOrDefault(\"" + name + "\", 0.0)).get()";
+        return String.format("%snew Lambda(() -> variables.getOrDefault(\"%s\", 0.0)).get()", prefix, name);
     }
 }
