@@ -15,7 +15,7 @@ class Lambda {
     }
 }
 
-public class CodesonSqrtTranslated {
+public class SqrtCodesonTranslated {
     public static double toDouble(boolean value) {
         return (value ? 1.0 : 0.0);
     }
