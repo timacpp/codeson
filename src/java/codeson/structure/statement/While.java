@@ -30,15 +30,14 @@ public class While implements Instruction {
         return String.format(
                 """
                 %snew Lambda(() -> {
-                %s  while (%s != 0.0) {
+                %s      while (%s != 0.0) {
                 %s;
-                %s  }
-                %s  return 0.0;
-                %s}).get()
-                """,
+                %s      }
+                %s      return 0.0;
+                %s}).get()""",
                 prefix,
                 prefix, condition.toLambda(""), 
-                loopInstruction.toLambda(prefix + "\t\t"),
+                loopInstruction.toLambda(prefix + "\t\t\t"),
                 prefix,
                 prefix,
                 prefix

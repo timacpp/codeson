@@ -34,12 +34,11 @@ public class If implements Instruction {
         return String.format(
                """
                %snew Lambda(() -> %s != 0.0
-               %s   ?
+               %s?
                %s
-               %s   :
+               %s:
                %s
-               %s   ).get()
-               """,
+               %s).get()""",
                 prefix, condition.toLambda(""),
                 prefix,
                 truthInstruction.toLambda(prefix + "\t"),

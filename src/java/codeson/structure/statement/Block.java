@@ -1,8 +1,8 @@
 package codeson.structure.statement;
 
-import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.squareup.moshi.Json;
 import codeson.structure.Instruction;
@@ -21,36 +21,50 @@ public class Block implements Instruction {
     
     @Override
     public double execute(HashMap<String, Double> variables) {
-        if (instructions.size() == 0)
-            return 0;
-        
-        double lastInstructionValue = 0;
-        
-        for (Instruction instruction : instructions) {
-            lastInstructionValue = instruction.execute(variables);
-        }
-        
-        return lastInstructionValue;
+        return instructions.stream()
+                .mapToDouble(instruction -> instruction.execute(variables))
+                .skip(instructions.size() - 1).findFirst().orElse(0.0);
     }
 
     @Override
     public String toLambda(String prefix) {
+        return String.format("%snew Lambda(() -> %s).get()", prefix, getInstructionsLambda(prefix));
+    }
+    
+    private String getInstructionsLambda(String prefix) {
         if (instructions.size() == 0)
-            return prefix + "new Lambda(() -> 0.0).get()";
+            return "0.0";
         
+        String lambdas = getNonterminatingLambdas(prefix) + getTerminatingLambda(prefix);
+        return formatInstructionsLambda(lambdas, prefix);
+    }
+    
+    private String getNonterminatingLambdas(String prefix) {
         StringBuilder lambdas = new StringBuilder();
+        instructions.stream()
+                .map(instruction -> instruction.toLambda(prefix + "\t") + ";\n")
+                .limit(instructions.size() - 1)
+                .forEachOrdered(lambdas::append);
         
-        for (int i = 0; i < instructions.size(); i++) {
-            String instruction = instructions.get(i).toLambda(prefix + "\t");
-
-            if (i < instructions.size() - 1) {
-                lambdas.append(instruction).append(";\n");
-            } else {
-                String suffix = instruction.substring(prefix.length() + 1);
-                lambdas.append(prefix).append("\treturn ").append(suffix).append(";");
-            }
-        }
-        
-        return prefix + "new Lambda(() -> {\n" + lambdas + "\n" + prefix + "}).get()";
+        return lambdas.toString();
+    }
+    
+    private String getTerminatingLambda(String prefix) {
+        StringBuilder builder = new StringBuilder();
+        String instruction = instructions.get(instructions.size() - 1).toLambda(prefix + "\t");
+        String suffix = instruction.substring(prefix.length() + 1);
+        return builder.append(prefix).append("\treturn ").append(suffix).append(";").toString();
+//
+//        Instruction lastInstruction = instructions.get(instructions.size() - 1);
+//        return String.format("%s\treturn %s;", prefix, lastInstruction.toLambda(""));
+    }
+    
+    private String formatInstructionsLambda(String lambdas, String prefix) {
+        return String.format(
+                """
+                {
+                %s
+                %s}""", lambdas, prefix
+        );
     }
 }

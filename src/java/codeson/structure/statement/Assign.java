@@ -29,10 +29,9 @@ public class Assign implements Instruction {
         return String.format(
                 """
                 %snew Lambda(() -> {
-                %s  variables.put("%s", %s);
-                %s  return variables.get("%s");
-                %s}).get()
-                """, 
+                %s      variables.put("%s", %s);
+                %s      return variables.get("%s");
+                %s}).get()""", 
                 prefix,
                 prefix, assignVariableName, assignInstruction.toLambda(""),
                 prefix,
