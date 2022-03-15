@@ -25,14 +25,23 @@ public class While implements Instruction {
         
         return 0;
     }
-
-    @Override
+    
     public String toLambda(String prefix) {
-        return prefix + "new Lambda(() -> {\n" +
-               prefix + "\twhile (" + condition.toLambda("") + " != 0.0) {\n" + 
-               loopInstruction.toLambda(prefix + "\t\t") + ";\n" +
-               prefix + "\t}\n" + 
-               prefix + "\treturn 0.0;\n" + 
-               prefix + "}).get()"; 
+        return String.format(
+                """
+                %snew Lambda(() -> {
+                %s  while (%s != 0.0) {
+                %s;
+                %s  }
+                %s  return 0.0;
+                %s}).get()
+                """,
+                prefix,
+                prefix, condition.toLambda(""), 
+                loopInstruction.toLambda(prefix + "\t\t"),
+                prefix,
+                prefix,
+                prefix
+        );
     }
 }
