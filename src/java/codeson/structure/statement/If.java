@@ -26,20 +26,31 @@ public class If implements Instruction {
         if (condition.execute(variables) != 0)
             return truthInstruction.execute(variables);
         
-        return (elseInstruction == null ? 0 : elseInstruction.execute(variables));
+        return elseInstruction == null ? 0 : elseInstruction.execute(variables);
     }
     
     @Override
     public String toLambda(String prefix) {
-        String elseLambda = elseInstruction == null ?
-                new Block().toLambda(prefix + "\t") :
-                elseInstruction.toLambda(prefix + "\t");
+        return String.format(
+               """
+               %snew Lambda(() -> %s != 0.0
+               %s  ?
+               %s
+               %s  :
+               %s
+               %s   ).get()
+               """,
+                prefix, condition.toLambda(""), prefix,
+                truthInstruction.toLambda(prefix + "	"),
+                prefix,
+                getElseBlockLambda(prefix),
+                prefix);
+    }
+    
+    private String getElseBlockLambda(String prefix) {
+        if (elseInstruction == null)
+            return new Block().toLambda(prefix + "\t");
         
-        return prefix + "new Lambda(() -> " + condition.toLambda("") + " != 0.0\n" +
-               prefix + "\t?\n" +
-               truthInstruction.toLambda(prefix + "\t") + "\n" +
-               prefix + "\t:\n" +
-               elseLambda + "\n" + 
-               prefix + "\t).get()"; 
+        return elseInstruction.toLambda(prefix + "\t");
     }
 }
