@@ -54,9 +54,6 @@ public class Block implements Instruction {
         String instruction = instructions.get(instructions.size() - 1).toLambda(prefix + "\t");
         String suffix = instruction.substring(prefix.length() + 1);
         return builder.append(prefix).append("\treturn ").append(suffix).append(";").toString();
-//
-//        Instruction lastInstruction = instructions.get(instructions.size() - 1);
-//        return String.format("%s\treturn %s;", prefix, lastInstruction.toLambda(""));
     }
     
     private String formatInstructionsLambda(String lambdas, String prefix) {
