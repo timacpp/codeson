@@ -56,10 +56,10 @@ new Lambda(() -> toDouble(new Lambda(() -> new Lambda(() -> variables.getOrDefau
 ```
 
 # Codeson execution
-The `src/codeson/CodesonExecutor.java` can be used to execute a Codeson program. After deserialization, it retuns a single `double` value, unless division by zero occured.
+The `src/codeson/CodesonExecutor.java` can be used to execute a Codeson program. After deserialization, it returns a single `double` value, unless division by zero occurred.
 
 # Codeson serialization
-The `src/codeson/CodesonCloner.java` is able to serialize Codeson programs. Which means, if a Codeson program was previously deserialized, it can create an identicle program without copying the previous file content.
+The `src/codeson/CodesonCloner.java` is able to serialize Codeson programs. Which means, if a Codeson program was previously deserialized, it can create an identical program without copying the previous file content.
 
 
 
