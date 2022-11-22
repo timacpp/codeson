@@ -1,6 +1,6 @@
 # About the project
 
-Codeson is an experimental programming language, where everyting is an instruction corresponding to a numeric value.
+Codeson is an experimental programming language, where everything is an instruction corresponding to a numeric value.
 
 # Example program
 
